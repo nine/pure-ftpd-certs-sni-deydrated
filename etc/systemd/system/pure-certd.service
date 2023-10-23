@@ -1,0 +1,13 @@
+[Unit]
+Description=TLS certificate agent for Pure-FTPd
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=2
+ExecStart=pure-certd --run /usr/local/bin/pure-ftpd-certs-sni.sh --socket /var/run/pure-ftpd-certs.sock
+
+[Install]
+WantedBy=multi-user.target
